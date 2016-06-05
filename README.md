@@ -13,3 +13,5 @@ In the evening (and night), we built a track for the rc car and aggregated resou
 The morning consisted of studying more about machine-learning and neural networks. We also (finally) successfully installed OpenCV, mostly thanks to [this tutorial](https://www.youtube.com/watch?v=U49CVY8yOxw).
 
 We then aggregated both positive and negative images for stop-lights and stop-signs. Using OpenCV, we then generated classifiers for both and tested it using our computers' webcams, which worked (though our algorithms definitely need more refining with extra positive and negative images).
+
+Later in the evening, we had a visit from a data scientist who explained to us the power of both (numpy)[http://www.numpy.org/] and (matplotlib)[http://matplotlib.org/] python libraries. We were then able
