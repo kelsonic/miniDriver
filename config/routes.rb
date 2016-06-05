@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
   root 'pages#home'
+  get 'hardware', to: 'pages#hardware'
+  get 'code', to: 'pages#code'
+  get 'machine-learning', to: 'pages#machine_learning'
 end

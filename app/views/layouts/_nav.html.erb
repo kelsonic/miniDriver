@@ -1,12 +1,16 @@
 <nav class="black">
   <div class="nav-wrapper">
-    <a href="#!" class="brand-logo center"><span class="deep-orange-text">mini</span>Driver</a>
+    <a href="/" class="brand-logo center"><span class="deep-orange-text">mini</span>Driver</a>
     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons deep-orange-text">menu</i></a>
     <ul class="right hide-on-med-and-down">
-      <li><a href="#">Link</a></li>
+      <li><%= link_to "Machine Learning", machine_learning_path %></li>
+      <li><%= link_to "Hardware", hardware_path %></li>
+      <li><%= link_to "The Code", code_path %></li>
     </ul>
     <ul class="side-nav deep-orange" id="mobile-demo">
-      <li><a class="white-text" href="#">Link</a></li>
+      <li><%= link_to "Machine Learning", machine_learning_path, class: "white-text" %></li>
+      <li><%= link_to "Hardware", hardware_path, class: "white-text" %></li>
+      <li><%= link_to "The Code", code_path, class: "white-text" %></li>
     </ul>
   </div>
 </nav>
