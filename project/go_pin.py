@@ -44,12 +44,15 @@ def chat_client():
                    GPIO.output(go_pin, GPIO.HIGH)
                elif data == "STOP":
                    GPIO.output(go_pin, GPIO.LOW)
-                    sleep(3)
+                   sleep(3)
                    GPIO.output(go_pin, GPIO.HIGH)
+                   print "GO"
+               elif data == "STOP OBSTACLE":
+                   GPIO.output(go_pin, GPIO.LOW)
                else:
                    sys.stdout.flush()
 
 
 if __name__ == "__main__":
-    GPIO.cleanup()
+    # GPIO.cleanup()
     sys.exit(chat_client())
