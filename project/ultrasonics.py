@@ -40,6 +40,7 @@ try:
             client_socket.send("STOP OBSTACLE")
         else:
             print "GO"
+            client_socket.send("GO")
 
 except KeyboardInterrupt:
     GPIO.cleanup() 
