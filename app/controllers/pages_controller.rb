@@ -10,4 +10,8 @@ class PagesController < ApplicationController
 
   def machine_learning
   end
+
+  def admin
+    is_admin?
+  end
 end
