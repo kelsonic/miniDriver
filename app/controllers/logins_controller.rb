@@ -4,13 +4,13 @@ class LoginsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email: session_params[:email])
+    @user = User.find_by(username: session_params[:username])
     if @user && @user.authenticate(session_params[:password])
       session[:user_id] = @user.id
       flash[:success] = "Welcome #{@user.username}. You are now logged in."
       redirect_to root_path
     else
-      flash[:errors] = ["Email or password was incorrect."]
+      flash[:errors] = ["Username or password was incorrect."]
       render 'new'
     end
   end
@@ -23,7 +23,7 @@ class LoginsController < ApplicationController
 
   private
     def session_params
-      params.require(:session).permit(:email, :password)
+      params.require(:session).permit(:username, :password)
     end
 
 end

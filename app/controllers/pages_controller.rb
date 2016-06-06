@@ -1,4 +1,8 @@
 class PagesController < ApplicationController
+
+  include LoginsHelper
+  include UsersHelper
+
   def home
   end
 
@@ -12,6 +16,6 @@ class PagesController < ApplicationController
   end
 
   def admin
-    is_admin?
+    is_admin?(current_user)
   end
 end

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'hardware', to: 'pages#hardware'
   get 'code', to: 'pages#code'
   get 'machine-learning', to: 'pages#machine_learning'
+  get 'admin', to: 'pages#admin'
 
   get 'login', to: "logins#new"
   post 'login', to: 'logins#create'
