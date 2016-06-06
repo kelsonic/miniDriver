@@ -6,8 +6,24 @@
       <li><%= link_to "Machine Learning", machine_learning_path %></li>
       <li><%= link_to "Hardware", hardware_path %></li>
       <li><%= link_to "The Code", code_path %></li>
+      <% if current_user %>
+        <li><%= link_to "Logout", logout_path, method: :delete, class: "red-text" %></li>
+        <% if current_user.admin? %>
+          <li><%= link_to "Control", admin_path %></li>
+        <% end %>
+      <% else %>
+        <li><%= link_to "Login", login_path, class: "light-green-text text-lighten-1" %></li>
+      <% end %>
     </ul>
     <ul class="side-nav deep-orange" id="mobile-demo">
+      <% if current_user %>
+        <li><%= link_to "Logout", logout_path, method: :delete %></li>
+        <% if current_user.admin? %>
+          <li><%= link_to "Control", admin_path, class: "white-text" %></li>
+        <% end %>
+      <% else %>
+        <li><%= link_to "Login", login_path, class: "white-text" %></li>
+      <% end %>
       <li><%= link_to "Machine Learning", machine_learning_path, class: "white-text" %></li>
       <li><%= link_to "Hardware", hardware_path, class: "white-text" %></li>
       <li><%= link_to "The Code", code_path, class: "white-text" %></li>

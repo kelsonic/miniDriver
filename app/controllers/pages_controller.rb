@@ -16,6 +16,6 @@ class PagesController < ApplicationController
   end
 
   def admin
-    is_admin?(current_user)
+    is_admin?
   end
 end

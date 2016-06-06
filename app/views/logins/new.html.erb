@@ -9,7 +9,7 @@
     <%= form_for(:session, url: login_path) do |f| %>
       <div class="input-field">
         <%= f.label :username %>
-        <%= f.email_field :username, class: "validate white-text" %>
+        <%= f.text_field :username, class: "validate white-text" %>
       </div>
 
       <br/>
