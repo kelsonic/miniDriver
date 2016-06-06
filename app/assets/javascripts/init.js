@@ -6,7 +6,7 @@ $(document).ready(function() {
     e.preventDefault()
 
     $.ajax({
-      url: "192.16.51.218",
+      url: "http://172.16.50.242:9009",
       method: "POST",
       data: "ON"
     }).done(function(msg) {
@@ -18,9 +18,9 @@ $(document).ready(function() {
 
   $("#off").on("click", function(e) {
     e.preventDefault()
-    
+
     $.ajax({
-      url: "192.16.51.218",
+      url: "http://172.16.50.242:9009",
       method: "POST",
       data: "OFF"
     }).done(function(msg) {
