@@ -88,7 +88,6 @@ class SensorDataHandler(SocketServer.BaseRequestHandler):
             while self.data:
                 self.data = self.request.recv(20)
                 if(self.data == "STOP"):
-                    # controller_sock.send("STOP OBSTACLE")
                     sensor_data = True
                 print self.data
         finally:
