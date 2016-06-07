@@ -12,13 +12,14 @@ SOCKET_LIST = []
 RECV_BUFFER = 4096
 PORT = 9009
 stopCascade = cv2.CascadeClassifier('C:\OpenCV-3.1.0\opencv\sources\data\haarcascades\stop_sign.xml')
+# stopCascade = cv2.CascadeClassifier('C:\OpenCV-3.1.0\opencv\sources\data\haarcascades\pedestrian.xml')
 
 
 def control_server():
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     server_socket.bind((HOST, PORT))
-    server_socket.listen(2)
+    server_socket.listen(3)
     SOCKET_LIST.append(server_socket)
     print "controller server started on port ", PORT
     while 1:
@@ -29,7 +30,7 @@ def control_server():
                 SOCKET_LIST.append(sockfd)
                 print "Client (%s, %s) connected" % addr
 
-            elif len(SOCKET_LIST) == 4:
+            elif len(SOCKET_LIST) == 3:
                 # process data recieved from client,
 
                 camera_connection = SOCKET_LIST[1].makefile('rb')
@@ -82,7 +83,7 @@ def show_stream(sock, camera_connection, server_socket):
             if (w>110):
                 broadcast(server_socket, sock, "GO")
                 print("GO")
-            elif (w>100):
+            elif (w>40):
                 broadcast(server_socket, sock, "STOP")
                 print("STOP")
             else:

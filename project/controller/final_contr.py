@@ -18,7 +18,7 @@ def control_server():
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     server_socket.bind((HOST, PORT))
-    server_socket.listen(2)
+    server_socket.listen(4)
     SOCKET_LIST.append(server_socket)
     print "controller server started on port ", PORT
     while 1:
@@ -28,15 +28,16 @@ def control_server():
                 sockfd, addr = server_socket.accept()
                 SOCKET_LIST.append(sockfd)
                 print "Client (%s, %s) connected" % addr
+                print len(SOCKET_LIST)
 
-            elif len(SOCKET_LIST) == 3:
+            if len(SOCKET_LIST) >= 4:
                 # process data recieved from client,
 
                 camera_connection = SOCKET_LIST[1].makefile('rb')
-
+                us_connection = SOCKET_LIST[2]
                 try:
                     # receiving data from the socket.
-                    show_stream(sock, camera_connection, server_socket)
+                    show_stream(sock, camera_connection, server_socket, us_connection)
 
                 # exception
                 except:
@@ -45,7 +46,7 @@ def control_server():
     server_socket.close()
 
 
-def show_stream(sock, camera_connection, server_socket):
+def show_stream(sock, camera_connection, server_socket, us_connection):
     while True:
         # Read the length of the image as a 32-bit unsigned int. If the
         # length is zero, quit the loop
@@ -75,20 +76,25 @@ def show_stream(sock, camera_connection, server_socket):
             minSize=(30, 30),
             flags=cv2.CASCADE_SCALE_IMAGE
         )
-
         # Draw a rectangle around the stop
-        for (x, y, w, h) in stop:
-            cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
-            if (w>110):
-                broadcast(server_socket, sock, "GO")
-                print("GO")
-            elif (w>100):
-                broadcast(server_socket, sock, "STOP")
-                print("STOP")
+        if(us_connection.recv(128) == "STOP OBSTACLE"):
+            broadcast(server_socket, sock, "STOP OBSTACLE")
+            print("STOP OBSTACLE")
+        else:
+            for (x, y, w, h) in stop:
+                cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+                if (w>110):
+                    broadcast(server_socket, sock, "GO")
+                    print("GO")
+                elif (w>50):
+                    broadcast(server_socket, sock, "STOP")
+                    print("STOP")
+                else:
+                    broadcast(server_socket, sock, "GO")
+                    print("GO")
             else:
                 broadcast(server_socket, sock, "GO")
                 print("GO")
-
         cv2.imshow('Video', frame)
         cv2.waitKey(1)
         if  cv2.waitKey(1) & 0xFF == ord('q'):
