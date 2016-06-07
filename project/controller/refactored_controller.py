@@ -64,7 +64,8 @@ class VideoStreamHandler(SocketServer.StreamRequestHandler):
                         print("Stop, obstacle in front")
                         controller_sock.send("STOP")
                         sensor_data = False
-
+                        time.sleep(0.1)
+                        print("I've just woken up")
                     elif 1 < width < 110:
                         print("Stop sign ahead")
                         controller_sock.send("STOP")
@@ -89,7 +90,6 @@ class SensorDataHandler(SocketServer.BaseRequestHandler):
                 if(self.data == "STOP"):
                     # controller_sock.send("STOP OBSTACLE")
                     sensor_data = True
-                #print "{} sent:".format(self.client_address[0])
                 print self.data
         finally:
             print "Connection closed on sensor data"
