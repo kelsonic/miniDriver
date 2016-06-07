@@ -1,4 +1,8 @@
 class PagesController < ApplicationController
+
+  include LoginsHelper
+  include UsersHelper
+
   def home
   end
 
@@ -9,5 +13,9 @@ class PagesController < ApplicationController
   end
 
   def machine_learning
+  end
+
+  def admin
+    is_admin?
   end
 end

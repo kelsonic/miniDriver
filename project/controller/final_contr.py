@@ -78,6 +78,7 @@ def show_stream(sock, camera_connection, server_socket, us_connection):
         )
         # Draw a rectangle around the stop
         if(us_connection.recv(128) == "STOP OBSTACLE"):
+
             broadcast(server_socket, sock, "STOP OBSTACLE")
             print("STOP OBSTACLE")
         else:
@@ -87,6 +88,7 @@ def show_stream(sock, camera_connection, server_socket, us_connection):
                     broadcast(server_socket, sock, "GO")
                     print("GO")
                 elif (w>50):
+
                     broadcast(server_socket, sock, "STOP")
                     print("STOP")
                 else:

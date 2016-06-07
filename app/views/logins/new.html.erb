@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col s12 center">
+    <h1 class="deep-orange-text">Login</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s12 m6 offset-m3 l4 offset-l4 center">
+    <%= form_for(:session, url: login_path) do |f| %>
+      
+      <div class="input-field">
+        <%= f.label :username %>
+        <%= f.text_field :username, class: "validate white-text" %>
+      </div>
+
+      <br/>
+
+      <div class="input-field">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "validate white-text" %>
+      </div>
+
+      <br/>
+
+      <%= f.submit "Login", class: "deep-orange btn waves-effect waves-orange" %>
+    <% end %>
+  </div>
+</div>
