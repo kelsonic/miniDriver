@@ -77,7 +77,8 @@ def show_stream(sock, camera_connection, server_socket, us_connection):
             flags=cv2.CASCADE_SCALE_IMAGE
         )
         # Draw a rectangle around the stop
-        if(us_connection.recv(1024) == "STOP OBSTACLE"):
+        if(us_connection.recv(128) == "STOP OBSTACLE"):
+
             broadcast(server_socket, sock, "STOP OBSTACLE")
             print("STOP OBSTACLE")
         else:
@@ -86,7 +87,8 @@ def show_stream(sock, camera_connection, server_socket, us_connection):
                 if (w>110):
                     broadcast(server_socket, sock, "GO")
                     print("GO")
-                elif (w>100):
+                elif (w>50):
+
                     broadcast(server_socket, sock, "STOP")
                     print("STOP")
                 else:
