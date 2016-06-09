@@ -11,8 +11,8 @@
     <table class="white-text">
       <thead>
         <tr>
-            <th data-field="item" class="deep-orange-text">Item</th>
-            <th data-field="quantity" class="deep-orange-text">Quantity</th>
+          <th data-field="item" class="deep-orange-text">Item</th>
+          <th data-field="quantity" class="deep-orange-text">Quantity</th>
         </tr>
       </thead>
 
@@ -31,15 +31,27 @@
         </tr>
         <tr>
           <!-- Item -->
+          <td>Ultrasonic Ranging Module (HC - SR04) </td>
+          <!-- Quantity -->
+          <td>1</td>
+        </tr>
+        <tr>
+          <!-- Item -->
+          <td>Mini Camera Video Module for Rasberry Pi (Arducam 5 Megapixels 1080p Sensor OV5647) </td>
+          <!-- Quantity -->
+          <td>1</td>
+        </tr>
+        <tr>
+          <!-- Item -->
           <td>Optoisolators (NTE340)</td>
           <!-- Quantity -->
-          <td>4</td>
+          <td>3</td>
         </tr>
         <tr>
           <!-- Item -->
           <td>Resistors (100&#8486;)</td>
           <!-- Quantity -->
-          <td>4</td>
+          <td>3</td>
         </tr>
         <tr>
           <!-- Item -->
@@ -59,6 +71,12 @@
           <!-- Quantity -->
           <td>30-40</td>
         </tr>
+        <tr>
+          <!-- Item -->
+          <td>Breadboard, small to medium size</td>
+          <!-- Quantity -->
+          <td>1-2</td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -66,6 +84,22 @@
 
 <div class="row">
   <div class="col s12 m10 offset-m1 l8 offset-l2">
-    <h2>
+    <h2 class="white-text center">The Details</h2>
+    <h5 class = "deep-orange-text">RC Car</h5>
+    <p class = "flow-text white-text">We decided that the best approach to accessing the directionality of the car would be to manipulate the circuitry of the RC controller instead of the circuitry of the car itself. We therefore chose this specific RC car because of the simplicity in the controller. Each directional button on the controller is only a push on/off button, rather than a continuous control. This made the integration of the raspberry pi relatively simple, as we just had to override the functionality of the physical button.</p>
+    <p class = "flow-text white-text">We originally had some trouble fitting all of our components on the car. In the first iteration, we attached the ultrasonic sensor, camera, raspberry pi, breadboard, and battery pack. Due to physical limitations, we ended up having to remove the breadboard and solder the circuitry. For more flexibility, we suggest purchasing a slightly larger vehicle (maybe a truck instead of the sexy, but somewhat minimal, BMW i8).</p>
+    <h5 class = "deep-orange-text">The controller circuitry</h5>
+    <p class = "flow-text white-text">The following drawing shows the circuitry for one directional button:</p>
+    <%= image_tag("controller_circuit.JPG", class: "responsive-img z-depth-2 materialboxed", data: {caption: "The circuit for one directional button."}) %>
+    <p class = "flow-text white-text">The GPIO on the raspberry pi is connected to pin 1 of the optoisolator. The pi pin should be set to an output voltage of HIGH when that direction should be switched to "on." Pin 2 of the optoisolator is connected to common ground through the 100 Ohm resistor. Pin 4 is connected to the directional button on the controller board. You can find the correct spot to solder the wire on the controller board by following the circuit lines. Pin 5 is connected to common ground.</p>
+    <p class = "flow-text white-text">We replicated this circuit 3 times to manipulate the forward, right, and left buttons. Additionally, we chose to remove the batteries and power our controller through the 5V output pin on the raspberry pi.</p>
+    <%= image_tag("controller.JPG", class: "responsive-img z-depth-2 materialboxed", data: {caption: "The final version of the controller."}) %>
+    <h5 class = "deep-orange-text">The car circuitry</h5>
+    <p class = "flow-text white-text">We put a second raspberry pi directly on our car to gather data from the camera and ultrasonic sensor. The camera is specific to the raspberry pi, and simply connects to the camera port. The following diagram represents the circuitry to connect the ultrasonic sensor:</p>
+    <%= image_tag("us_circuitry.jpg", class: "responsive-img z-depth-2 materialboxed", data: {caption: "The circuit diagram for our ultrasonic sensor."}) %>
+    <p class = "flow-text white-text">The top row represents the ports on the ultrasonic sensor, and the bottom row represents the ports on the raspberry pi. Below is an image that shows the circuitry connected to the sensor.</p>
+    <%= image_tag("car_breadboard.jpg", class: "responsive-img z-depth-2 materialboxed", data: {caption: "The breadboard connected to the ultrasonic sensor."}) %>
+    <p class = "flow-text white-text">As stated earlier, the breadboard was a bit too bulky for our car. We ended up removing the breadboard entirely, and soldering our circuit together to lighten the load on our car. We then added the raspberry pie directly to the top of the car and connected the sensor. We were also sure to program our raspberry pi so that one pin was an output pin, and one was an input pin. If both pins are accidentally programmed as output pins, the raspberry pi will have too much voltage being directed back into its circuitry, and will consequently burn out. Check out <%= link_to "this resource", "http://www.micropik.com/PDF/HCSR04.pdf" %> for more information about how the ultrasonic sensor uses waves to determine the car's distance from road obstructions.</p>
+    <%= image_tag("car.jpg", class: "responsive-img z-depth-2 materialboxed", data: {caption: "The final version of the car, with the raspberry pi connected to the ultrasonic sensor and camera."}) %>
   </div>
 </div>
