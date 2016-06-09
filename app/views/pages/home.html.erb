@@ -10,86 +10,22 @@
 
     <div class="row">
       <div class="col s12 center">
-        <h2 class="deep-orange-text">Day 1</h2>
-          <p class="left-align">With little experience coding in Python, we focused on learning Python for the first half of the day. We completed <%= link_to "this Udemy python bootcamp course", "https://www.udemy.com/complete-python-bootcamp/" %> and developed a solid understanding of Python fundamentals and data structures. One of the key concepts in Python is NumPy, a package that implements array objects with additional functionality.</p>
-
-          <p class="left-align">In the second half of the day, we concentrated on discovering and installing machine learning libraries (mostly OpenCV). We also delved into neural networks and found <%= link_to "this incredible Github repository", "https://github.com/FlorianMuellerklein/Machine-Learning" %> that contains machine-learning algorithms for perceptrons.
-
-          <%= image_tag("perceptron.jpg", class: "responsive-img z-depth-2 materialboxed", data: {caption: "The relationship between perceptrons and neurons."}) %>
-
-          <p class="left-align">In the evening, we built a track for the RC car and aggregated resources for Day 2 to learn more about using Raspberry Pi with both RC cars and machine-learning libraries. We spent a good portion of the evening attempting to install OpenCV with much tribulation.</p>
+        <h2 class="deep-orange-text">Stop Sign</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/fdnau_6TXG4" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
 
     <div class="row">
       <div class="col s12 center">
-        <h2 class="deep-orange-text">Day 2</h2>
-        <div class="left-align">
-          <p class="flow-text">The morning consisted of studying more about machine-learning and neural networks. We were finally successful in installing OpenCV thanks to <%= link_to "this tutorial", "https://www.youtube.com/watch?v=U49CVY8yOxw" %>.</p>
-
-          <p class="flow-text">Next, we attempted to make our own classifiers to be used for image detection for our RC car to recognize with the camera. We aggregated both positive and negative images for stop-signs and a pedestrian. Positive images are small, cropped images of the item we want to recognize (i.e. stop-signs) and negative images are what your camera is going to see that does not include the item you want to recognize (i.e. the open racetrack). We ultimately spent several days running the OpenCV software to train the classifiers, but our algorithms were not trained well enough and did not perform very well. For our testing, we used a stop-sign classifier from <%= link_to "Hamuchiwa’s project", "https://github.com/hamuchiwa/AutoRCCar" %>.</p>
-
-          <p class="flow-text">Later in the evening, we had a visit from a data scientist who explained to us the power of both <%= link_to "NumPy", "http://www.numpy.org/" %> and <%= link_to "matplotlib", "http://matplotlib.org/" %> Python libraries. He showed us some of the steps to alter the image into a NumPy array of the RGB colors and select a specific section of the image to analyze for color changes. This is later what we used when working on lane detection in Days 6 and 7.</p>
-        </div>
+        <h2 class="deep-orange-text">Stop Sign: Second Iteration</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/r5jslwFw8IU" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
 
     <div class="row">
       <div class="col s12 center">
-        <h2 class="deep-orange-text">Day 3</h2>
-        <div class="left-align">
-          <p class="flow-text">We received the RC car in the early afternoon and quickly started to disassemble the controller so we could connect our Raspberry Pi. Some of our team worked on connecting a Raspberry Pi with the RC car controller while other members worked on getting the second Raspberry Pi camera to stream video to our computer via web sockets (a TCP server).
-</p>
-
-          <%= image_tag("rc1.jpg", class: "responsive-img z-depth-2 materialboxed", data: {caption: "The RC BMW i8 with ultrasonic sensors before attaching the Raspberry Pi."}) %>
-
-          <p class="flow-text">We were able to control the car from a remote computer via Python, but did not yet implement any logic for these actions. We simply would write command line Python that would turn on or off the pins to the controller which would then tell the car to move forward or stop.</p>
-          <p class="flow-text">We also wrote the python script to control the ultrasonic sensors and built out the software to incorporate both the ultrasonic sensors and the camera module together using TCP Servers.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col s12 center">
-        <h2 class="deep-orange-text">Day 4</h2>
-        <div class="left-align">
-          <p class="flow-text">In the morning, we got the video data from the camera module to send its data (a string of binaries) to our computer via the TCP server. We then converted each frame of the video data to a jpg file. As soon as we could convert the data to jpg files, we easily implemented the stop-sign classifier to recognize stop-signs in our streaming video. We  had it print out the width of the stop-sign found in the each frame so that we can signal to the RC car to stop once the stop sign is large enough in its view.</p>
-          <p class="flow-text">Some members of our team spent a good portion of the day assembling the wiring on the bread boards that connect to the RC car. The circuitry connects to the forward, left, and right controls. Stop is implemented by the Raspberry Pi turning off signal to the forward direction.</p>
-          <p class="flow-text">We also worked on implementing multi-threading in Python in order to get our UltraSonic sensors and video stream data from interfering with one another and to improve the speed which our program would run.</p>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col s12 center">
-        <h2 class="deep-orange-text">Day 5</h2>
-        <p class="flow-text">We spent the morning taking the car out for test runs on a straight track we built. We tested changing between stop signs and road blocks to see how the car would react. We found some issues with the delay due to camera latency and also the wifi signal. Determining the root cause for our delayed responses was somewhat difficult. We had an initial hypothesis that it was the weight of the car causing it to respond quite slowly. In order to lighten it up, we replaced the battery pack with a lighter one.</p>
-        <p class="flow-text">Later, we realized that it was in fact due to the signal from the RC controller not reaching the car from being too far away. To correct this we now have the controller placed very near to the car, following it as it goes through the track.</p>
-        <p class="flow-text">The rest of the day was spent debugging the TCP servers and multi-threading to improve the camera latency in order to work on other aspects of the project.</p>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col s12 center">
-        <h2 class="deep-orange-text">Day 6</h2>
-        <p class="flow-text">Our team had a morning meeting to decide what which features we wanted to implement into the car which ones we did not want to pursue after meeting MVP. As a team, we decided to first stabilize the camera and make sure that the Ultra Sonic sensor and camera were fully functional before pursuing the other features. We restructured how the car was configured so that everything on it was more stable.</p>
-        <p class="flow-text">After testing the stability of the camera and sensor we moved on to our stretch, lane detection. We researched multiple projects to see how this was approached. We were either going to use image recognition or use algorithms to detect the lane on the image. After meeting as a group we decided to attempt to implement some of the lane detection algorithms found in other projects. We tested it out on our track and found that it did not implement accurately with our environment so decided to write our own from scratch. </p>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col s12 center">
-        <h2 class="deep-orange-text">Day 7</h2>
-        <p class="flow-text">As a group we decided this was going to be the last day to implement anything on the car in order to focus on the presentation and perfecting any deficiencies with the vehicle and code. We spent the morning formalizing the algorithm and testing the camera before bringing it out to the track in the afternoon.</p>
-        <p class="flow-text">Our group spent the rest of the day running tests on the field to adjust the algorithm accordingly. After running many tests we finally were able to get the left and right turn timed properly to correct itself on a straight a path. After achieving that part of the feature we went on implementing a full turn with the RC car. This process was fairly easy due to the fact that our algorithm detected the lines on the road well, and only needed to self adjust a little bit to turn. </p>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col s12 center">
-        <h2 class="deep-orange-text">Day 8</h2>
-        <p class="flow-text">Our last day of the project was just spent doing final touch ups and creating the website and presentation. </p>
+        <h2 class="deep-orange-text">Turn and Obstacle</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/Nkzq1IuaAmQ" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
 
