@@ -6,13 +6,13 @@ class PagesController < ApplicationController
   def home
   end
 
-  def code
+  def software
   end
 
   def hardware
   end
 
-  def machine_learning
+  def prep
   end
 
   def admin
