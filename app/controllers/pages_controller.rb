@@ -18,4 +18,8 @@ class PagesController < ApplicationController
   def admin
     is_admin?
   end
+
+  def about
+  end
+
 end
