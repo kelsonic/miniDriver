@@ -2,9 +2,10 @@ import RPi.GPIO as GPIO
 import time
 import socket
 
-# create socket and bind host
+#create socket and bind host
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client_socket.connect(('172.16.51.218', 9009))
+#client_socket.connect(('172.16.51.218', 9009))
+client_socket.connect(('172.16.51.218', 9011))
 
 GPIO.setmode(GPIO.BOARD)
 
@@ -35,12 +36,11 @@ try:
 
         distance = (stop - start) * 17000
         time.sleep(0.1)
-        if distance <= 20:
+        if distance <= 50:
             print "STOP"
-            client_socket.send("STOP OBSTACLE")
+            client_socket.send("STOP")
         else:
             print "GO"
-            client_socket.send("GO")
-
 except KeyboardInterrupt:
-    GPIO.cleanup() 
+    GPIO.cleanup()
+    client_socket.close()
