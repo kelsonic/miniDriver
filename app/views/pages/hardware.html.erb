@@ -31,15 +31,27 @@
         </tr>
         <tr>
           <!-- Item -->
+          <td>Ultrasonic Ranging Module (HC - SR04) </td>
+          <!-- Quantity -->
+          <td>1</td>
+        </tr>
+        <tr>
+          <!-- Item -->
+          <td>Mini Camera Video Module for Rasberry Pi (Arducam 5 Megapixels 1080p Sensor OV5647) </td>
+          <!-- Quantity -->
+          <td>1</td>
+        </tr>
+        <tr>
+          <!-- Item -->
           <td>Optoisolators (NTE340)</td>
           <!-- Quantity -->
-          <td>4</td>
+          <td>3</td>
         </tr>
         <tr>
           <!-- Item -->
           <td>Resistors (100&#8486;)</td>
           <!-- Quantity -->
-          <td>4</td>
+          <td>3</td>
         </tr>
         <tr>
           <!-- Item -->
@@ -61,13 +73,7 @@
         </tr>
         <tr>
           <!-- Item -->
-          <td>Ultrasonic Ranging Module (HC - SR04) </td>
-          <!-- Quantity -->
-          <td>1</td>
-        </tr>
-        <tr>
-          <!-- Item -->
-          <td>Mini Camera Video Module for Rasberry Pi (Arducam 5 Megapixels 1080p Sensor OV5647) </td>
+          <td>Breadboard, small to medium size</td>
           <!-- Quantity -->
           <td>1</td>
         </tr>
@@ -78,6 +84,18 @@
 
 <div class="row">
   <div class="col s12 m10 offset-m1 l8 offset-l2">
-    <h2>
-    </div>
+    <h2 class="white-text center">The Details</h2>
+    <h5 class = "deep-orange-text">RC Car</h5>
+    <p class = "flow-text white-text">We decided that the best approach to accessing the directionality of the car would be to manipulate the circuitry of the RC controller instead of the circuitry of the car itself. We therefore chose this specific RC car because of the simplicity in the controller. Each directional button on the controller is only a push on/off button, rather than a continuous control. This made the integration of the raspberry pi relatively simple, as we just had to override the functionality of the physical button.</p>
+    <p class = "flow-text white-text">We originally had some trouble fitting all of our components on the car. In the first iteration, we attached the ultrasonic sensor, camera, raspberry pi, breadboard, and battery pack. Due to physical limitations, we ended up having to remove the breadboard and solder the circuitry. For more flexibility, we suggest purchasing a slightly larger vehicle (maybe a truck instead of the sexy, but somewhat minimal, BMW i8).</p>
+    <h5 class = "deep-orange-text">The controller circuitry</h5>
+    <p class = "flow-text white-text">The following drawing shows the circuitry for one directional button:</p>
+    <%= image_tag("controller_circuit.JPG", class: "responsive-img z-depth-2 materialboxed", data: {caption: "The circuit for one directional button."}) %>
+    <p class = "flow-text white-text">The GPIO on the raspberry pi is connected to pin 1 of the optoisolator. The pi pin should be set to an output voltage of HIGH when that direction should be switched to "on." Pin 2 of the optoisolator is connected to common ground through the 100 Ohm resistor. Pin 4 is connected to the directional button on the controller board. You can find the correct spot to solder the wire on the controller board by following the circuit lines. Pin 5 is connected to common ground.</p>
+    <p class = "flow-text white-text">We replicated this circuit 3 times to manipulate the forward, right, and left buttons. Additionally, we chose to remove the batteries and power our controller through the 5V output pin on the raspberry pi.</p>
+    <%= image_tag("controller.JPG", class: "responsive-img z-depth-2 materialboxed", data: {caption: "The final version of the controller."}) %>
+    <h5 class = "deep-orange-text">The car circuitry</h5>
+    <p class = "flow-text white-text">We decided that the best approach to accessing the directionality of the car would be to manipulate the circuitry of the RC controller instead of the circuitry of the car itself. We therefore chose this specific RC car because of the simplicity in the controller. Each directional button on the controller is only a push on/off button, rather than a continuous control. This made the integration of the raspberry pi relatively simple, as we just had to override the functionality of the physical button.</p>
+    <%= image_tag("car_breadboard.jpg", class: "responsive-img z-depth-2 materialboxed", data: {caption: "The final version of the controller."}) %>
   </div>
+</div>
