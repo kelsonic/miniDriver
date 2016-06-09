@@ -6,7 +6,7 @@ import struct
 import cv2
 import numpy as np
 import time
-#
+
 
 
 sensor_data = False
@@ -94,7 +94,9 @@ def VideoStreamTurningHandler():
 
 class VideoStreamHandler(SocketServer.StreamRequestHandler):
 
-    stop_classifier = cv2.CascadeClassifier('C:\OpenCV-3.1.0\opencv\sources\data\haarcascades\stop_sign.xml')
+    # stop_classifier = cv2.CascadeClassifier('C:\OpenCV-3.1.0\opencv\sources\data\haarcascades\stop_sign.xml')
+    stop_classifier = cv2.CascadeClassifier('~\Desktop\miniDriver\project\stop_sign.xml')
+
     object_detection = ObjectDetection()
     # rc_send = RCSend()
 
