@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   root 'pages#home'
+  get 'about', to: 'pages#about'
+  get 'prep', to: 'pages#prep'
   get 'hardware', to: 'pages#hardware'
-  get 'code', to: 'pages#code'
-  get 'machine-learning', to: 'pages#machine_learning'
+  get 'software', to: 'pages#software'
+  get 'process', to: 'pages#process'
+
+  # Don't mind the routes below
   get 'admin', to: 'pages#admin'
 
   get 'login', to: "logins#new"

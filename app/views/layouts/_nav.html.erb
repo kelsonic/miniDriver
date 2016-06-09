@@ -3,9 +3,10 @@
     <a href="/" class="brand-logo center"><span class="deep-orange-text">mini</span>Driver</a>
     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons deep-orange-text">menu</i></a>
     <ul class="right hide-on-med-and-down">
-      <li><%= link_to "Machine Learning", machine_learning_path %></li>
+      <li><%= link_to "Prep", prep_path %></li>
       <li><%= link_to "Hardware", hardware_path %></li>
-      <li><%= link_to "The Code", code_path %></li>
+      <li><%= link_to "Software", software_path %></li>
+      <li><%= link_to "Process", process_path %></li>
       <% if current_user %>
         <li><%= link_to "Logout", logout_path, method: :delete, class: "red-text" %></li>
         <% if current_user.admin? %>
@@ -24,9 +25,10 @@
       <% else %>
         <li><%= link_to "Login", login_path, class: "white-text" %></li>
       <% end %>
-      <li><%= link_to "Machine Learning", machine_learning_path, class: "white-text" %></li>
+      <li><%= link_to "Prep", prep_path, class: "white-text" %></li>
       <li><%= link_to "Hardware", hardware_path, class: "white-text" %></li>
-      <li><%= link_to "The Code", code_path, class: "white-text" %></li>
+      <li><%= link_to "Software", software_path, class: "white-text" %></li>
+      <li><%= link_to "Process", process_path, class: "white-text" %></li>
     </ul>
   </div>
 </nav>
