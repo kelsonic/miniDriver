@@ -4,3 +4,79 @@
   </div>
 </div>
 
+<div class="row">
+  <div class="col s12 m10 offset-m1 l8 offset-l2">
+    <h3 class="deep-orange-text center">What you'll need to know before starting.</h3>
+    <p class="white-text flow-text">We wil be building a self-driving RC car. To do this, we will not only need the required materials but we will also need to learn about a few concepts before we begin.</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s12 m10 offset-m1 l8 offset-l2">
+    <h2 class="deep-orange-text center">Multithreading</h2>
+    <p class="white-text flow-text">For this project, we will be using multithreading. What is multithreading?</p>
+
+    <p class="white-text flow-text">Multithreading is running parallel processes on the same machine.</p>
+
+    <p class="white-text flow-text">We will be incorporating multithreading into our Python scripts in order to reduce latency between our Raspberry Pis and our server.</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s12 m10 offset-m1 l8 offset-l2">
+    <h2 class="deep-orange-text center">TCP Servers and Sockets</h2>
+    <p class="white-text flow-text">We will set up 3 TCP servers for this project to communicate with the ultrasonic sensor, the camera, and the RC controller.</p>
+
+    <p class="white-text flow-text">To do this, we will import the <%= link_to "Python Socket", "https://docs.python.org/2/library/socket.html" %> and <%= link_to "SocketServer", "https://docs.python.org/2/library/socketserver.html" %> modules.</p>
+
+    <div class="col s12 white">
+      <%= image_tag('websockets.jpeg', class: "responsive-img materialboxed", data: {caption: "Image from PubNub."}) %>
+    </div>
+
+    <p class="white-text flow-text center">Image from <%= link_to "PubNub", "https://www.pubnub.com/" %>.</p>
+
+    <p class="white-text flow-text">A web socket is a server that listens to a client. They are able to send-and-receive messages to and from one another.</p>
+
+    <p class="white-text flow-text">Python websockets are blocking by nature. This means that the server will wait to receive data from a client and it will ignore all other processes until it receives the data from the client.</p>
+
+    <p class="white-text flow-text">There are modules that can make Python websockets non-blocking, such as <%= link_to "Tornado", "http://www.tornadoweb.org/en/stable/" %>, but we will use Python's built-in websocket modules for this project.</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s12 m10 offset-m1 l8 offset-l2">
+    <h2 class="deep-orange-text center">Machine-Learning</h2>
+    <p class="white-text flow-text">We will need machine-learning to recognize stop sign in our camera feed.</p>
+
+    <p class="white-text flow-text">First, to understand how we are going to do this we need to have an understanding of <%= link_to "Haar Cascade Classifiers", "http://coding-robin.de/2013/07/22/train-your-own-opencv-haar-classifier.html" %>.</p>
+
+    <p class="white-text flow-text">You may also want to read up on <%= link_to "neural networks", "http://neuralnetworksanddeeplearning.com/chap1.html" %>.</p>
+
+    <div class="col s12 white">
+      <%= image_tag("neural_network.png", class: "responsive-img z-depth-2 materialboxed", data: {caption: "A neural network for programming."}) %>
+    </div>
+
+    <p class="white-text flow-text center">This is a neural network</p>
+
+    <p class="white-text flow-text">For our project, the input nodes will be the pixels from each video frame.</p>
+
+    <p class="white-text flow-text">Based on how we train our classifier (our camera's brain), our hidden layer will have various thresholds that will 'fire' to the output layers depending on how it's trained.</p>
+
+    <%= image_tag("stop_sign.jpg", class: "responsive-img z-depth-2 materialboxed", data: {caption: "Our camera detecting a stop sign."}) %>
+
+    <p class="white-text flow-text">If the inputs (pixels) match a stop sign, our hidden-layer nodes will 'fire' to the appropriate output nodes, letting us know where exactly the stop sign is detected inside of the video frame.</p>
+
+    <p class="white-text flow-text">To help us with this process, we will be using <%= link_to "OpenCV", "http://opencv.org/" %>, a machine-learning external library.</p>
+
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col s12 m10 offset-m1 l8 offset-l2 center">
+    <h2 class="deep-orange-text">Now let's take a look at the hardware.</h2>
+    <br/>
+    <%= link_to "Let's Go", hardware_path, class: "btn btn-large waves-effect waves-orange light-green" %>
+    <br/><br/><br/>
+  </div>
+</div>
