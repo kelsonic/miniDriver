@@ -95,10 +95,11 @@
     <p class = "flow-text white-text">We replicated this circuit 3 times to manipulate the forward, right, and left buttons. Additionally, we chose to remove the batteries and power our controller through the 5V output pin on the raspberry pi.</p>
     <%= image_tag("controller.JPG", class: "responsive-img z-depth-2 materialboxed", data: {caption: "The final version of the controller."}) %>
     <h5 class = "deep-orange-text">The car circuitry</h5>
-    <p class = "flow-text white-text">We put a second raspberry pi directly on our car to gather data from the camera and ultrasonic sensor. The following represents the circuitry to connect the ultrasonic sensor:</p>
+    <p class = "flow-text white-text">We put a second raspberry pi directly on our car to gather data from the camera and ultrasonic sensor. The camera is specific to the raspberry pi, and simply connects to the camera port. The following diagram represents the circuitry to connect the ultrasonic sensor:</p>
     <%= image_tag("us_circuitry.jpg", class: "responsive-img z-depth-2 materialboxed", data: {caption: "The circuit diagram for our ultrasonic sensor."}) %>
     <p class = "flow-text white-text">The top row represents the ports on the ultrasonic sensor, and the bottom row represents the ports on the raspberry pi. Below is an image that shows the circuitry connected to the sensor.</p>
-    <%= image_tag("car_breadboard.jpg", class: "responsive-img z-depth-2 materialboxed", data: {caption: "The final version of the controller."}) %>
+    <%= image_tag("car_breadboard.jpg", class: "responsive-img z-depth-2 materialboxed", data: {caption: "The breadboard connected to the ultrasonic sensor."}) %>
     <p class = "flow-text white-text">As stated earlier, the breadboard was a bit too bulky for our car. We ended up removing the breadboard entirely, and soldering our circuit together to lighten the load on our car. We then added the raspberry pie directly to the top of the car and connected the sensor. We were also sure to program our raspberry pi so that one pin was an output pin, and one was an input pin. If both pins are accidentally programmed as output pins, the raspberry pi will have too much voltage being directed back into its circuitry, and will consequently burn out. Check out <%= link_to "this resource", "http://www.micropik.com/PDF/HCSR04.pdf" %> for more information about how the ultrasonic sensor uses waves to determine the car's distance from road obstructions.</p>
+    <%= image_tag("car.jpg", class: "responsive-img z-depth-2 materialboxed", data: {caption: "The final version of the car, with the raspberry pi connected to the ultrasonic sensor and camera."}) %>
   </div>
 </div>
