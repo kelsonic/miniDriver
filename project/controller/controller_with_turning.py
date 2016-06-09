@@ -54,30 +54,35 @@ def VideoStreamTurningHandler():
             #     image = cv2.imdecode(np.fromstring(jpg, dtype=np.uint8), cv2.IMREAD_UNCHANGED)
             if len(image):
                 image_array = np.array(image, np.float)
-                row = image_array[:,:,0][210]
+                row = image_array[:,:,0][200]
                 gradient2 = np.gradient(row)
                 # grad = np.absolute(gradient2)
                 # right_side = np.argmax(gradient2)
                 # left_side = np.argmin(gradient2)
-                right_side = np.argwhere(gradient2 > 20)
+                left_side = np.argwhere(gradient2 > 20)
+                if len(left_side) and len(left_side[0]) >= 1:
+                    left_side = left_side[0][0]
+                    cv2.line(image, (left_side, 0), (left_side, 240), (0, 255, 0))
+
+                right_side = np.argwhere(gradient2 < -20)
                 if len(right_side) and len(right_side[0]) >= 1:
                     right_side = right_side[0][0]
                     cv2.line(image, (right_side, 0), (right_side, 240), (0, 0, 255))
-
-                left_side = np.argwhere(gradient2 < -20)
-                if len(left_side) and len(left_side[0]) >= 1:
-                    left_side = left_side[0][0]
-                    cv2.line(image, (left_side, 0), (left_side, 240), (0, 0, 255))
                 if counter % 10 == 0:
                     print right_side, left_side
                 counter += 1
-                cv2.line(image, (0, 210), (320, 210), (255, 0, 0))
+                cv2.line(image, (0, 200), (320, 200), (255, 0, 0))
                 # time.sleep(5)
 
-                if (right_side > 270) or (left_side > 80):
+                if (left_side > 140):
                     left_right = "RIGHT"
-                elif (left_side < 50) or (right_side < 240):
+                elif (right_side < 180):
                     left_right = "LEFT"
+
+                # if (right_side > 270) or (left_side > 80):
+                #     left_right = "RIGHT"
+                # elif (left_side < 50) or (right_side < 240):
+                #     left_right = "LEFT"
                     # left_right = "RIGHT"
                     # left_right = "LEFT"
                 cv2.imshow('Turning', image)
@@ -119,16 +124,15 @@ class VideoStreamHandler(SocketServer.StreamRequestHandler):
                         controller_sock.send("STOP")
                         sensor_data = False
                         time.sleep(0.1)
-                        print("I've just woken up")
-                    elif 1 < width < 110:
+                    elif 5 < width < 110:
                         print("Stop sign ahead")
                         controller_sock.send("STOP")
                     elif len(left_right):
-                        print left_right
+                        # print left_right
                         controller_sock.send(left_right)
                         left_right = ''
                     else:
-                        print("GO")
+                        # print("GO")
                         controller_sock.send("GO")
 
                     if cv2.waitKey(1) & 0xFF == ord('q'):
