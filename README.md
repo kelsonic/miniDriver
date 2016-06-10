@@ -7,14 +7,14 @@ This is a project to program a self-driving RC car.
 Under the project folder.
 
 ## How can I recreate what you built?
-Read our 7-day process at [our website](http://minidriver.herokuapp.com/).
+Read our 7-day process at <a href="http://minidriver.herokuapp.com/">our website</a>.
 
 ## Team Members
-1. [Victoria Solorzano](https://github.com/vic8722)
-2. [David Tao](https://github.com/taodav)
-3. [Kristal Lam](https://github.com/Kristallam)
-4. [Aarthi Gurusami](https://github.com/agurusa)
-5. [Kelson Adams](https://github.com/kelsonic)
+1. <a href="https://github.com/vic8722">Victoria Solorzano</a>
+2. <a href="https://github.com/taodav">David Tao</a>
+3. <a href="https://github.com/Kristallam">Kristal Lam</a>
+4. <a href="https://github.com/agurusa">Aarthi Gurusami</a>
+5. <a href="https://github.com/kelsonic">Kelson Adams</a>
 
 ### License
 MIT License.
