@@ -4,10 +4,10 @@ This is a project to program a self-driving RC car.
 <img align="center" width="600" height="400" src="http://minidriver.herokuapp.com/assets/team-b0fb80a6c9e8b70edd3d32aea6e3bd9572abd787adfe4938876cc66c2e577f59.jpg">
 
 ## Where is the code you used to build the self-driving RC car?
-Under the project folder.
+Under [the /project folder](/project).
 
 ## How can I recreate what you built?
-Read our 7-day process at <a href="http://minidriver.herokuapp.com/">our website</a>.
+Read our 7-day process on <a href="https://minidriver.herokuapp.com">our website</a>.
 
 ## Team Members
 1. <a href="https://github.com/vic8722">Victoria Solorzano</a>
@@ -17,4 +17,4 @@ Read our 7-day process at <a href="http://minidriver.herokuapp.com/">our website
 5. <a href="https://github.com/kelsonic">Kelson Adams</a>
 
 ### License
-MIT License.
+MIT License. View it [here](LICENSE).
